@@ -1,0 +1,3 @@
+UPLOAD_FOLDER = './tmp/uploads'
+ALLOWED_EXTENSIONS = {'csv'}
+PERMITTED_SIZE = 16 * 1000 * 1000
