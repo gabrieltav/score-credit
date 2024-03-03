@@ -1,3 +1,4 @@
+import os
 from flask import Flask
 from utils.constants import UPLOAD_FOLDER, PERMITTED_SIZE
 from views.new_clients_view import new_clients
@@ -7,6 +8,7 @@ app = Flask(__name__)
 app.config["DEBUG"] = True;
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['MAX_CONTENT_LENGTH'] = PERMITTED_SIZE
+app.config["DEBUG"] = os.environ.get("DEBUG", "").lower() == "true"
 
 @app.route("/")
 def hello_world():
@@ -25,4 +27,4 @@ def predict():
     return new_clients(app.config['UPLOAD_FOLDER'])
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=app.config["DEBUG"])

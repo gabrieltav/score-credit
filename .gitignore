@@ -1,4 +1,5 @@
 .venv
+.env
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
