@@ -2,7 +2,7 @@ import os
 from flask import Flask
 from utils.constants import UPLOAD_FOLDER, PERMITTED_SIZE
 from views.new_clients_view import new_clients
-from views.upload_view import upload, unzip
+from views.upload_view import upload, unzip, restart_application
 
 app = Flask(__name__)
 app.config["DEBUG"] = True;
@@ -21,6 +21,10 @@ def uploadModel():
 @app.route('/unzip-model', methods=['POST'])
 def unzipModel():
     return unzip()
+
+@app.route('/restart', methods=['POST'])
+def restart():
+    return restart_application()
 
 @app.route('/predict', methods=['POST'])
 def predict():

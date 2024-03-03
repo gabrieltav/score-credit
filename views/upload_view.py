@@ -1,5 +1,6 @@
 import os
 import zipfile
+import subprocess
 from werkzeug.utils import secure_filename
 from flask import jsonify, flash, request
 from utils.constants import ALLOWED_EXTENSIONS
@@ -27,6 +28,15 @@ def upload(folder):
             file.save(os.path.join(folder, filename))
             return filename, 200
     return jsonify({'message': 'Invalid method.'}), 405
+
+def restart_application():
+    # Modifique o caminho para o arquivo .wsgi conforme necessário
+    wsgi_file = './tmp/uploads/predict.pkl'
+    
+    # Use o comando touch no arquivo .wsgi para forçar o Apache a recarregar a aplicação
+    subprocess.run(["touch", wsgi_file])
+
+    return jsonify({'message': 'Application restarted successfully!'}), 200
 
 def unzip():
     # Caminho para o arquivo zip
