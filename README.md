@@ -18,7 +18,7 @@
 
 1. Clone the repository:
     ```
-     git clone git@github.com:gabrieltav/classroom-allocation.git
+     git clone git@github.com:gabrieltav/score-credit.git
     ```
 5. Open with VScode code and open the terminal
 6. Create an environment
